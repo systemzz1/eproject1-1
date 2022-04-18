@@ -69,7 +69,7 @@ class eprojectController extends Controller
     public function store_category(Request $request)
     {
 
-
+//        dd($request);
         $this->formValidate_category($request)->validate();
 
         //lay image_name
