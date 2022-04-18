@@ -62,17 +62,18 @@
                 <a href="#" class="nav_link ">
                     <i class='bx bx-user nav_icon'></i>
                     <span class="nav_name">Admin Account</span>
-                </a> <a href="{{ route('admin.create.category') }}" class="nav_link {{ (isset($location))? ($location==='new_category')? 'active': '' :''}}">
-                    <i class='bx bx-duplicate nav_icon'></i>
-                    <span class="nav_name">New Category</span> </a>
-                <a href="{{ route('admin.create.product') }}" class="nav_link {{ (isset($location))? ($location==='new_product')? 'active': '' :''}}">
-                    <i class='bx bx-duplicate nav_icon'></i>
-                    <span class="nav_name">New Product</span>
                 </a>
-                <a href="{{ route('admin.create.service') }}" class="nav_link {{ (isset($location))? ($location==='new_service')? 'active': '' :''}}">
-                    <i class='bx bx-duplicate nav_icon'></i>
-                    <span class="nav_name">New Service</span>
-                </a>
+{{--<a href="{{ route('admin.create.category') }}" class="nav_link {{ (isset($location))? ($location==='new_category')? 'active': '' :''}}">--}}
+{{--                    <i class='bx bx-duplicate nav_icon'></i>--}}
+{{--                    <span class="nav_name">New Category</span> </a>--}}
+{{--                <a href="{{ route('admin.create.product') }}" class="nav_link {{ (isset($location))? ($location==='new_product')? 'active': '' :''}}">--}}
+{{--                    <i class='bx bx-duplicate nav_icon'></i>--}}
+{{--                    <span class="nav_name">New Product</span>--}}
+{{--                </a>--}}
+{{--                <a href="{{ route('admin.create.service') }}" class="nav_link {{ (isset($location))? ($location==='new_service')? 'active': '' :''}}">--}}
+{{--                    <i class='bx bx-duplicate nav_icon'></i>--}}
+{{--                    <span class="nav_name">New Service</span>--}}
+{{--                </a>--}}
 {{--                <a href="#" class="nav_link">--}}
 {{--                    <i class='bx bx-bar-chart-alt-2 nav_icon'></i>--}}
 {{--                    <span class="nav_name">Stats</span> </a>--}}
