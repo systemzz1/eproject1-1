@@ -31,7 +31,7 @@
 
 
                             <div class="col-md-6">
-                                <input class="form-control" type="text" name="service_validity_period" value="{{old('service_validity_period')?? $service->service_validity_period}}" placeholder="Service validity period">
+                                <input class="form-control" type="number" name="service_validity_period" value="{{old('service_validity_period')?? $service->service_validity_period}}" placeholder="Service validity period">
 
                             </div>
 
