@@ -79,7 +79,7 @@ Route::group(['prefix' => 'eproject'], function (){
 
     //product
 
-    Route::get('admin_index.product', [
+    Route::get('admin_index_product', [
         'uses' => 'App\Http\Controllers\eprojectController@index_product',
         'as' => 'admin.index.product'
 
