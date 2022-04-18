@@ -51,6 +51,11 @@
                                 <i class='bx bxs-duplicate nav_icon'></i>
                                 <span class="nav_name" style="color:black;">Product</span>
                             </a></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a href="{{ route('admin.index.service') }}" class="nav_link">
+                                <i class='bx bxs-duplicate nav_icon'></i>
+                                <span class="nav_name" style="color:black;">Service</span>
+                            </a></li>
                     </ul>
                 </div>
 
@@ -64,7 +69,7 @@
                     <i class='bx bx-duplicate nav_icon'></i>
                     <span class="nav_name">New Product</span>
                 </a>
-                <a href="#" class="nav_link">
+                <a href="{{ route('admin.create.service') }}" class="nav_link {{ (isset($location))? ($location==='new_service')? 'active': '' :''}}">
                     <i class='bx bx-duplicate nav_icon'></i>
                     <span class="nav_name">New Service</span>
                 </a>
