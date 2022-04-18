@@ -26,7 +26,7 @@ Route::group(['prefix' => 'eproject'], function (){
 
     ]);
 //category
-    Route::get('admin_index', [
+    Route::get('admin_index_category', [
         'uses' => 'App\Http\Controllers\eprojectController@index_category',
         'as' => 'admin.index.category'
 
