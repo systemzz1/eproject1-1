@@ -18,16 +18,9 @@
             content: none;
         }
 
-        div.dropdown.open {
-            margin-bottom: 120px;
-        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
-    <script>
 
-////
-
-    </script>
 
 </head>
 
@@ -44,8 +37,25 @@
         <div><a href="{{ route('admin.home') }}" class="nav_logo"> <i class='bx bx-layer nav_logo-icon'></i> <span
                     class="nav_logo-name">Database</span> </a>
             <div class="nav_list">
-                <div class="nav-item dropdown">
-                <a href="#" class="nav_link {{ (isset($location))? ($location==='admin_index')? 'active': '' :''}} " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="nav-item dropdown" >
+                <a href="#" class="nav_link {{ (isset($location))? ($location==='admin_index')? 'active': '' :''}} " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false"
+                >
+
+                    <script>
+                        ////push_content_down
+                        document.getElementById('navbarDropdown').onclick = function() {
+
+                            var className = ' ' + navbarDropdown.className + ' ';
+
+                            if ( ~className.indexOf(' show ') ) {
+                                this.className += ' toggle';
+                            } else {
+                                this.className = className.replace(' toggle ', ' ');
+                            }
+                        }
+                    </script>
+
+
                     <i class='bx bx-grid-alt nav_icon'></i>
                     <span class="nav_name">Table  <i class='bx bxs-down-arrow bx-fade-down-hover '></i></span>
                 </a>
@@ -73,6 +83,7 @@
                     <i class='bx bx-user nav_icon'></i>
                     <span class="nav_name">Admin Account</span>
                 </a>
+
 {{--<a href="{{ route('admin.create.category') }}" class="nav_link {{ (isset($location))? ($location==='new_category')? 'active': '' :''}}">--}}
 {{--                    <i class='bx bx-duplicate nav_icon'></i>--}}
 {{--                    <span class="nav_name">New Category</span> </a>--}}
