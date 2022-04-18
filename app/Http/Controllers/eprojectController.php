@@ -344,7 +344,7 @@ class eprojectController extends Controller
 
                 'name' => ['required'],
                 'weight' => ['required','gt:0'],
-                'price' => ['required','gt:10'],
+                'price' => ['required','gt:0'],
                 'categoryid' => ['required'],
                 'description' => ['required'],
                 'brand' => ['required'],
@@ -360,5 +360,168 @@ class eprojectController extends Controller
 
 
     //service
+
+
+
+    public function index_service()
+    {
+        $service = eproject::getAllService();
+
+        return view('masters.index_service'
+            ,[
+                'location' => 'admin_index'
+            ],
+            [
+                'service' => $service
+            ]
+        );
+    }
+
+    public function show_service($id)
+    {
+        $service = eproject::getServiceById($id);
+        $category = eproject::getAllCategory();
+        return view('product.show_product',
+            [
+                'service' => $service[0],
+                'category' => $category
+            ]
+        );
+    }
+
+    public function form_service()
+    {
+        $category = eproject::getAllCategory();
+        return view('product.new_service',
+            ["service" => (object)
+            [
+                'id' => '',
+                'categoryid' => '',
+                'name' => '',
+                'price' => '',
+                'description' => '',
+                'service_validity_period' => '',
+                'image' => ''
+
+            ]
+            ],
+            [
+                'category' => $category,
+                'location' => 'new_service'
+            ]
+        );
+    }
+
+    public function store_service(Request $request)
+    {
+//        dd($request);
+        $this->formValidate_service($request)->validate(); //shortcut
+
+        $image = $request->file('image');
+        $name = $image->getClientOriginalName();
+
+        //store image to `public/admin_upload` folder
+        $image->move('img/admin_upload', $name );
+
+        //store image_name to database
+        $service = (object)[
+            'categoryid' => $request->input('categoryid'),
+            'name' => $request->input('name'),
+            'price' => $request->input('price'),
+            'description' => $request->input('description'),
+            'service_validity_period' => $request->input('service_validity_period'),
+            'image' => $name
+
+        ];
+        $newId = eproject::insert_service($service);
+
+        return redirect()
+            ->action('eprojectController@index_service')
+            ->with('status', 'New service with id: '.$newId. 'has been created');
+    }
+
+
+    public function confirm_service($id){
+        $service= eproject::getServiceById($id);
+        return view('product.confirm_service',
+            [
+//                'id' => $id,
+                'service'=> $service[0],
+            ]
+        );
+    }
+
+    public function delete_service(Request $request, $id)
+    {
+        if ($request->input('id') != $id) {
+            return redirect()->action('eprojectController@index_service');
+        }
+
+        eproject::delete_service($id);
+
+
+        return redirect()->action('eprojectController@index_service')
+            ->with('status', 'Delete Service Successfully');
+    }
+
+
+    public function edit_service($id)
+    {
+        $service = eproject::getServiceById($id);
+        $category = eproject::getAllCategory();
+        return view(
+            'product.edit_service',
+            [
+                'product'=>$service[0],'category'=> $category
+            ]
+        );
+    }
+
+    public function update_service(Request $request, $id)
+    {
+//        dd($request);
+        if ($id != $request->input('id')) {
+            return redirect()->action('eprojectController@index_service');
+        }
+
+        $this->formValidate_service($request)->validate(); //shortcut
+
+
+        $image = $request->file('image');
+        $name = $image->getClientOriginalName();
+
+        $image->move('img/admin_upload', $name );
+
+        $service = (object)[
+            'categoryid' => $request->input('categoryid'),
+            'name' => $request->input('name'),
+            'price' => $request->input('price'),
+            'description' => $request->input('description'),
+            'service_validity_period' => $request->input('service_validity_period'),
+            'image' => $name
+        ];
+        eproject::update_service($service);
+
+        return redirect()->action('eprojectController@index_service')
+            ->with('status', 'Service Update Successfully');
+    }
+
+
+    private function formValidate_service($request)
+    {
+        return Validator::make(
+            $request->all(),
+            [
+
+                'name' => ['required'],
+                'price' => ['required','gt:0'],
+                'categoryid' => ['required'],
+                'description' => ['required'],
+                'service_validity_period' => ['required'],
+                'image' => ['required', 'mimes:jpg,png', 'max:2000'],
+
+            ],
+        );
+    }
 
 }
