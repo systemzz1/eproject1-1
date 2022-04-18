@@ -360,6 +360,12 @@ class eprojectController extends Controller
 
 
     //service
+    /////
+    ///
+    ///
+    ///
+    ///
+    ///
 
 
 
@@ -381,7 +387,7 @@ class eprojectController extends Controller
     {
         $service = eproject::getServiceById($id);
         $category = eproject::getAllCategory();
-        return view('product.show_product',
+        return view('service.show_service',
             [
                 'service' => $service[0],
                 'category' => $category
@@ -392,7 +398,7 @@ class eprojectController extends Controller
     public function form_service()
     {
         $category = eproject::getAllCategory();
-        return view('product.new_service',
+        return view('service.new_service',
             ["service" => (object)
             [
                 'id' => '',
@@ -443,7 +449,7 @@ class eprojectController extends Controller
 
     public function confirm_service($id){
         $service= eproject::getServiceById($id);
-        return view('product.confirm_service',
+        return view('service.confirm_service',
             [
 //                'id' => $id,
                 'service'=> $service[0],
@@ -470,9 +476,9 @@ class eprojectController extends Controller
         $service = eproject::getServiceById($id);
         $category = eproject::getAllCategory();
         return view(
-            'product.edit_service',
+            'service.edit_service',
             [
-                'product'=>$service[0],'category'=> $category
+                'service'=>$service[0],'category'=> $category
             ]
         );
     }

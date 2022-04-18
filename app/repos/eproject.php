@@ -119,4 +119,57 @@ class eproject
 
 
     //service
+    //
+    ///
+    /// ////////////////////////////////////////////
+    /// //////////
+    /// //////
+
+    public static function getAllService() {
+        $sql = 'select c.* ';
+        $sql .= 'from `services` as c ';
+        $sql .= 'order by c.id';
+
+        return DB::select ($sql);
+    }
+
+
+    public static function insert_service($service){
+        $sql = 'insert into `services` ';
+        $sql .= '(categoryid, price, name, description, service_validity_period, image) ';
+        $sql .= 'values (?, ?, ?, ?, ?, ?) ';
+//dd($product);
+        $result =  DB::insert($sql, [$service->categoryid, $service->price, $service->name, $service->description,  $service->service_validity_period, $service->image]);
+        if($result){
+            return DB::getPdo()->lastInsertId();
+        } else {
+            return -1;
+        }
+    }
+
+
+    public static function getServiceById($id){
+        $sql = 'select c.* ';
+        $sql .= 'from `services` as c ';
+        $sql .= 'where c.id = ? ';
+
+        return DB::select($sql, [$id]);
+    }
+
+    public static function delete_service($id){
+        $sql = 'delete from `services` ';
+        $sql .= 'where id = ? ';
+
+        DB::delete($sql, [$id]);
+    }
+
+    public static function update_service($service){
+        $sql = 'update `services` ';
+        $sql .= 'set categoryid = ?, price =?, name = ?, description = ?, service_validity_period=?, image = ? ';
+        $sql .= 'where id = ? ';
+
+        DB::update($sql, [$service->categoryid, $service->price, $service->name, $service->description,  $service->service_validity_period, $service->image, $service->id ]);
+
+    }
+
 }
