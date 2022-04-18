@@ -343,8 +343,8 @@ class eprojectController extends Controller
             [
 
                 'name' => ['required'],
-                'weight' => ['required','gt:0'],
-                'price' => ['required','gt:0'],
+                'weight' => ['required', 'numeric', 'gt:0'],
+                'price' => ['required', 'numeric', 'gt:0'],
                 'categoryid' => ['required'],
                 'description' => ['required'],
                 'brand' => ['required'],
@@ -520,10 +520,10 @@ class eprojectController extends Controller
             [
 
                 'name' => ['required'],
-                'price' => ['required','gt:0'],
+                'price' => ['required','numeric' ,'gt:0'],
                 'categoryid' => ['required'],
                 'description' => ['required'],
-                'service_validity_period' => ['required'],
+                'service_validity_period' => ['required','numeric','gt:0'],
                 'image' => ['required', 'mimes:jpg,png', 'max:2000'],
 
             ],
