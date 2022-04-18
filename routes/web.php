@@ -127,5 +127,58 @@ Route::group(['prefix' => 'eproject'], function (){
     ]);
 
 
+//    service
+/////
+///
+///
+///
+
+
+    Route::get('admin_index_service', [
+        'uses' => 'App\Http\Controllers\eprojectController@index_service',
+        'as' => 'admin.index.service'
+
+    ]);
+
+    Route::get('detail_service/{id}', [
+        'uses' => 'App\Http\Controllers\eprojectController@show_service',
+        'as' => 'admin.detail.service'
+
+    ]);
+
+
+    Route::get('delete_service/{id}', [
+        'uses' => 'App\Http\Controllers\eprojectController@confirm_service',
+        'as' => 'admin.delete.confirm.service'
+
+    ]);
+    Route::post('delete_service/{id}', [
+        'uses' => 'App\Http\Controllers\eprojectController@delete_service',
+        'as' => 'admin.delete.service'
+
+    ]);
+
+    Route::get('update_service/{id}',[
+        'uses' => 'App\Http\Controllers\eprojectController@edit_service',
+        'as' => 'admin.edit.service'
+    ]);
+
+    Route::post('update_service/{id}',[
+        'uses' => 'App\Http\Controllers\eprojectController@update_service',
+        'as' => 'admin.update.service'
+    ]);
+
+
+    Route::get('new_service_form', [
+        'uses' => 'App\Http\Controllers\eprojectController@form_service',
+        'as' => 'admin.create.service'
+
+    ]);
+
+    Route::post('new_service_form', [
+        'uses' => 'App\Http\Controllers\eprojectController@store_service',
+        'as' => 'admin.store.service'
+
+    ]);
 
 });
