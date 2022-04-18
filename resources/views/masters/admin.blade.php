@@ -17,7 +17,17 @@
         .my-dropdown-toggle::after {
             content: none;
         }
+
+        div.dropdown.open {
+            margin-bottom: 120px;
+        }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.js" integrity="sha256-HwWONEZrpuoh951cQD1ov2HUK5zA5DwJ1DNUXaM6FsY=" crossorigin="anonymous"></script>
+    <script>
+
+////
+
+    </script>
 
 </head>
 
@@ -25,7 +35,7 @@
 
 <body id="body-pd">
 <header class="header" id="header">
-    <div class="header_toggle"><i class='bx bx-menu' id="header-toggle" onclick="disableDropdown()"></i></div>
+    <div class="header_toggle"><i class='bx bx-menu' id="header-toggle" ></i></div>
 </header>
 
 
@@ -41,7 +51,7 @@
                 </a>
 {{--                 admin.index--}}
 
-                    <ul class=" dropdown-menu" aria-labelledby="navbarDropdown">
+                    <ul class=" dropdown-menu " aria-labelledby="navbarDropdown">
                         <li><a href="{{ route('admin.index.category') }}" class="nav_link">
                                 <i class='bx bxs-duplicate nav_icon'></i>
                                 <span class="nav_name" style="color:black;">Category</span>
