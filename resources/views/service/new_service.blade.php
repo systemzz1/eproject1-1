@@ -20,7 +20,7 @@
                             </div>
 
                             <div class="col-md-6">
-                                <input class="form-control" type="number" name="price" value="{{old('weight')?? $service->price}}" placeholder="Price" step="0.1">
+                                <input class="form-control" type="number" name="price" value="{{old('price')?? $service->price}}" placeholder="Price" step="0.1">
 
                             </div>
 
