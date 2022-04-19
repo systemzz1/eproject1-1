@@ -3,7 +3,7 @@
 
 @section('main')
 
-    Home_page
+    Home_page ABCD 123sdafasdfsdzzzxcxczsdqweasdxzqweasdasdasdqweasdasdaaaaa
 
 
 @endsection
