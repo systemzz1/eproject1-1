@@ -3,7 +3,7 @@
 
 @section('main')
 
-    Home_page zxczxczxczxczxczaaaa
+    Home_page
 
 
 @endsection
